@@ -95,6 +95,7 @@
       _.defer(function() {
         if (this.hideAncestryField()) {
           this.loadIfDataReady();
+        
         }
       }.bind(this));
     },
@@ -104,9 +105,13 @@
           this.ticket().id() &&
           !_.isUndefined(this.ancestryValue())){
 
-        if (this.hasChild() || this.hasParent())
-          return this.ajax('fetchTicket', this.childID() || this.parentID());
-
+        if (this.hasChild() || this.hasParent()){
+          if (this.hasChild()) {this.hideSharingField();}
+            return this.ajax('fetchTicket', this.childID() || this.parentID());
+        }
+          
+		//Hiding Shared field on non child tickets
+        this.hideSharingField();
         this.displayHome();
       }
     },
@@ -523,12 +528,19 @@
 
     hideAncestryField: function(){
       var field = this.ticketFields("custom_field_" + this.ancestryFieldId());
-
       if (!field){
         services.notify(this.I18n.t("ancestry_field_missing"), "error");
         return false;
       }
-
+      return field.hide();
+        
+    },
+    hideSharingField: function(){
+      var field = this.ticketFields("sharedWith");
+      if (!field){
+        services.notify(this.I18n.t("shared Field missing"), "error");
+        return false;
+      }
       return field.hide();
     },
     ancestryValue: function(){
