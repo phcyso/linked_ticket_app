@@ -24,10 +24,23 @@
           "title": "this is the tag that the admin wishes to apply to every ticket that has gone through the app. this is to be defined on the settings page",
           "value": "Child Tag"
         },
-        "helpText": {
+      "helpText": {
           "title": "this is the help text for the child tag field",
           "value": "This tag will be added to the created child ticket. Example : child_ticket"
-        }
+        },
+       "default_email": {
+            "title": "this is the help text for the default email field",
+            "value": "This email will be set as the default requester when creating a child ticket"
+      	},
+          "show_agreement": {
+              "title": "Show the sharing dropdown on the new ticket page",
+              "value": "If selected there will be a sharing dropdown listing all agreements"
+          },
+          "hide_cc": {
+              "title": "Hide the CC dropdown on the new ticket page",
+              "value": "If selected the new CC field will be hidden on child ticket creation"
+              
+          }
       }
     },
     "package": "linked_ticket_app"
@@ -71,6 +84,12 @@
       "label": {
         "title": "This is a form to create a linked ticket from an existing regular ticket, this is the requester name of the future child ticket",
         "value": "Requester Name (For new requesters only)"
+      }
+    },
+     "agreement": {
+      "label": {
+        "title": "This is a form to create a linked ticket from an existing regular ticket, this is the Shared agreement details",
+        "value": "Share With"
       }
     },
     "group": {

@@ -1,7 +1,7 @@
 {
-  "name": "Linked Ticket",
+  "name": "Linked Ticket - Enhanced Edition",
   "author": {
-    "name": "Zendesk",
+    "name": "Zendesk & Kim Dowling",
     "email": "support@zendesk.com"
   },
 
@@ -12,8 +12,20 @@
       "required": true
     },
     {
+        "name": "default_email",
+        "type": "text"        
+  	},
+    {
       "name": "child_tag",
       "type": "text"
+    },
+    {
+      "name": "hide_cc",
+      "type": "checkbox"
+    },
+    {
+      "name": "show_agreement",
+      "type": "checkbox"
     }
   ],
 
@@ -21,5 +33,5 @@
   "private": false,
   "location": ["ticket_sidebar", "new_ticket_sidebar"],
   "frameworkVersion": "1.0",
-  "version": "1.7"
+  "version": "1.0"
 }

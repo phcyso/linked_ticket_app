@@ -11,6 +11,7 @@
       'createChildTicket.done'          : 'createChildTicketDone',
       'fetchTicket.done'                : 'fetchTicketDone',
       'fetchGroups.done'                : function(data){ this.fillGroupWithCollection(data.groups); },
+      'fetchAgreements.done'			: function(data){ this.fillAgreementWithCollection(data.sharing_agreements); },
       'createChildTicket.fail'          : 'genericAjaxFailure',
       'updateTicket.fail'               : 'genericAjaxFailure',
       'fetchTicket.fail'                : 'displayHome',
@@ -54,6 +55,13 @@
           processData: false,
           contentType: 'application/json',
           type: 'PUT'
+        };
+      },
+      fetchAgreements: function(){
+        return {
+          url: '/api/v2/sharing_agreements.json',
+          dataType: 'json',
+          type: 'GET'
         };
       },
       fetchTicket: function(id){
@@ -111,13 +119,18 @@
       event.preventDefault();
 
       this.ajax('fetchGroups');
+      this.ajax('fetchAgreements');
+        
 
       this.switchTo('form', {
         current_user: {
           email: this.currentUser().email()
         },
         tags: this.tags(),
-        ccs: this.ccs()
+        ccs: this.ccs(),
+          default_email: {
+              email: this.defaultEmail()
+          }
       });
 
       this.bindAutocompleteOnRequesterEmail();
@@ -191,7 +204,9 @@
     fillGroupWithCollection: function(collection){
       return this.$('.group').html(this.htmlOptionsFor(collection));
     },
-
+    fillAgreementWithCollection: function(collection){
+      return this.$('.agreement').html(this.htmlOptionsNoSeperatorFor(collection));
+    },
     fillAssigneeWithCollection: function(collection){
       return this.$('.assignee').html(this.htmlOptionsFor(collection));
     },
@@ -214,6 +229,16 @@
 
     htmlOptionsFor:  function(collection){
       var options = '<option>-</option>';
+
+      _.each(collection, function(item){
+        options += '<option value="'+item.id+'">'+(item.name || item.title)+'</option>';
+      });
+
+      return options;
+    },
+      
+    htmlOptionsNoSeperatorFor:  function(collection){
+     var options = '';
 
       _.each(collection, function(item){
         options += '<option value="'+item.id+'">'+(item.name || item.title)+'</option>';
@@ -329,6 +354,7 @@
 
       if (description.length === 1)
         ret += descriptionDelimiter + this.ticket().description();
+        
 
       this.formDescription(ret);
     },
@@ -394,7 +420,8 @@
         "comment": { "body": this.formDescription() },
         "custom_fields": [
           { id: this.ancestryFieldId(), value: 'child_of:' + this.ticket().id() }
-        ]
+        ],
+          "sharing_agreement_ids": [ Number("20048649") ]
       };
 
       _.extend(params,
@@ -402,7 +429,7 @@
                this.serializeAssigneeAttributes(),
                this.serializeTagAttributes()
               );
-
+		console.log(params); //log it baby!
       return { "ticket": params };
     },
 
@@ -456,7 +483,12 @@
       var type = this.formRequesterType();
       var attributes  = {};
 
-      if (type == 'current_user'){
+      if (type == 'default_email'){
+        attributes.requester = {
+          "email": this.defaultEmail(),
+          "name": ''
+        };
+      } else if (type == 'current_user'){
         attributes.requester_id = this.currentUser().id();
       } else if (type == 'ticket_requester' &&
                  this.ticket().requester().id()) {
@@ -502,9 +534,22 @@
     ancestryValue: function(){
       return this.ticket().customField("custom_field_" + this.ancestryFieldId());
     },
-    ancestryFieldId: function(){
+//SETTING HELPERS
+      ancestryFieldId: function(){
       return this.setting('ancestry_field');
     },
+    defaultEmail: function(){
+       // console.log(this.setting('default_email'));
+      return this.setting('default_email');
+    },
+   ccHidden: function(){
+      return this.setting('hide_cc');
+    },
+    showAgreement: function(){
+      return this.setting('show_agreement');
+    },
+      
+      
     hasChild: function(){
       return this.parentRegex.test(this.ancestryValue());
     },

@@ -5,10 +5,12 @@
       <strong>* {{t "form.requester.label"}}</strong>
       <div class="control-group">
         <select name="requester_type" class="span12" required>
+          <option value="default_email">Default - {{default_email.email}}</option>
           <option value="">-</option>
           <option value="current_user">{{t "form.requester.current_user"}} - {{current_user.email}}</option>
           <option value="ticket_requester">{{t "form.requester.ticket_requester"}} - {{ticket.requester.email}}</option>
           <option value="custom">{{t "form.requester.custom"}}</option>
+          
         </select>
       </div>
 
@@ -32,8 +34,8 @@
       <div class="control-group">
         <label>
           <select name="assignee_type" class="span12">
-            <option value="">-</option>
             <option value="current_user">{{t "form.assignee.current_user"}} - {{current_user.email}}</option>
+            <option value="">-</option>
             <option value="ticket_assignee">{{t "form.assignee.ticket_assignee"}} - {{ticket.assignee.group.name}}/{{ticket.assignee.user.email}}</option>
             <option value="custom">{{t "form.assignee.custom"}}</option>
           </select>
@@ -54,6 +56,13 @@
             <select class="assignee span12">
               <option>-</option>
             </select>
+          </label>
+        </div>
+      </div>
+      <div class="agreement_field">
+        <div class="control-group">
+          <label>{{t "form.agreement.label"}}
+            <select class="agreement span12"></select>
           </label>
         </div>
       </div>
