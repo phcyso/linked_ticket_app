@@ -523,6 +523,7 @@
     },
 
     ccs: function(){
+        if (this.ccHidden()){return [];} //Return a blank array if we dont want the CC's copied
       return _.map(this.ticket().collaborators(), function(cc){ return cc.email(); });
     },
 
@@ -555,10 +556,10 @@
       return this.setting('default_email');
     },
    ccHidden: function(){
-      return this.setting('hide_cc');
+      return this.setting('do_not_copy_ccs');
     },
     showAgreement: function(){
-      return this.setting('show_agreement');
+      return this.setting('show_agreement_on_linked_form');
     },
       
       

@@ -20,11 +20,15 @@
       "type": "text"
     },
     {
-      "name": "hide_cc",
+      "name": "do_not_copy_ccs",
       "type": "checkbox"
     },
     {
-      "name": "show_agreement",
+      "name": "show_agreement_on_linked_form",
+      "type": "checkbox"
+    },
+    {
+      "name": "hide_agreement_for_non_child_tickets",
       "type": "checkbox"
     }
   ],
