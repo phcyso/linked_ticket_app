@@ -133,9 +133,10 @@
         },
         tags: this.tags(),
         ccs: this.ccs(),
-          default_email: {
-              email: this.defaultEmail()
-          }
+        show_agreement: this.showAgreement(),
+        default_email: {
+          email: this.defaultEmail()
+        }     
       });
 
       this.bindAutocompleteOnRequesterEmail();
@@ -537,12 +538,15 @@
         
     },
     hideSharingField: function(){
-      var field = this.ticketFields("sharedWith");
-      if (!field){
-        services.notify(this.I18n.t("shared Field missing"), "error");
-        return false;
-      }
-      return field.hide();
+        if (this.hideParentAgreement()){
+          var field = this.ticketFields("sharedWith");
+          if (!field){
+            services.notify(this.I18n.t("shared Field missing"), "error");
+            return false;
+          }
+          return field.hide();
+        }
+  
     },
     ancestryValue: function(){
       return this.ticket().customField("custom_field_" + this.ancestryFieldId());
@@ -559,7 +563,10 @@
       return this.setting('do_not_copy_ccs');
     },
     showAgreement: function(){
-      return this.setting('show_agreement_on_linked_form');
+      return this.setting('show_agreement_on_child_form');
+    },
+    hideParentAgreement: function(){
+      return this.setting('hide_agreement_for_non_child_tickets');
     },
       
       

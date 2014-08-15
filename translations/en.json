@@ -32,7 +32,7 @@
             "title": "this is the help text for the default email field",
             "value": "This email will be set as the default requester when creating a child ticket"
       	},
-          "show_agreement_on_linked_form": {
+          "show_agreement_on_child_form": {
               "title": "Show the sharing dropdown on the new child ticket form",
               "value": "If selected there will be a sharing dropdown listing all agreements."
           },

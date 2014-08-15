@@ -5,7 +5,9 @@
       <strong>* {{t "form.requester.label"}}</strong>
       <div class="control-group">
         <select name="requester_type" class="span12" required>
+        {{#if default_email.email}}
           <option value="default_email">Default - {{default_email.email}}</option>
+        {{/if}}
           <option value="">-</option>
           <option value="current_user">{{t "form.requester.current_user"}} - {{current_user.email}}</option>
           <option value="ticket_requester">{{t "form.requester.ticket_requester"}} - {{ticket.requester.email}}</option>
@@ -59,6 +61,7 @@
           </label>
         </div>
       </div>
+       {{#if show_agreement}}
       <div class="agreement_field">
         <div class="control-group">
           <label>{{t "form.agreement.label"}}
@@ -66,6 +69,7 @@
           </label>
         </div>
       </div>
+      {{/if}}
 
       <strong>{{t "form.ccs.label"}}</strong>
       <div class="form_field ccs">

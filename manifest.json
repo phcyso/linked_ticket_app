@@ -24,7 +24,7 @@
       "type": "checkbox"
     },
     {
-      "name": "show_agreement_on_linked_form",
+      "name": "show_agreement_on_child_form",
       "type": "checkbox"
     },
     {
