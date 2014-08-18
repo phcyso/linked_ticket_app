@@ -14,3 +14,6 @@
 * Set a sharing agreement when creating a child ticket
 
 
+** Add labels to the settings **  -- COMPLETED
+
+** Translate the new text for the settinsg I added **

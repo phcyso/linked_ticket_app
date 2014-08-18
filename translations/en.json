@@ -1,255 +1,279 @@
 {
-  "app": {
-    "description": {
-      "title": "This is the app description",
-      "value": "Create and link a ticket from an existing one"
-    },
-    "name": {
-      "title": "This is the app name",
-      "value": "Linked Ticket"
-    },
-    "parameters": {
-      "ancestry_field": {
-        "label": {
-          "title": "This is the field that will contain the linked ticket data, like the ID etc...",
-          "value": "Reference Field"
+    "app": {
+        "description": {
+            "title": "This is the app description",
+            "value": "Create and link a ticket from an existing one"
         },
-        "helpText": {
-          "title": "This is the helptext of the reference field so the user knows what to enter. this appears on the settings page of an app",
-          "value": "Place a custom text field ID here to store the Linked Ticket reference data. Example : 2240041"
+        "name": {
+            "title": "This is the app name",
+            "value": "Linked Ticket"
+        },
+        "parameters": {
+            "ancestry_field": {
+                "label": {
+                    "title": "This is the field that will contain the linked ticket data, like the ID etc...",
+                    "value": "Reference Field"
+                },
+                "helpText": {
+                    "title": "This is the helptext of the reference field so the user knows what to enter. this appears on the settings page of an app",
+                    "value": "Place a custom text field ID here to store the Linked Ticket reference data. Example : 2240041"
+                }
+            },
+            "child_tag": {
+                "label": {
+                    "title": "this is the tag that the admin wishes to apply to every ticket that has gone through the app. this is to be defined on the settings page",
+                    "value": "Child Tag"
+                },
+                "helpText": {
+                    "title": "this is the help text for the child tag field",
+                    "value": "This tag will be added to the created child ticket. Example : child_ticket"
+                }
+            },
+            "default_email": {
+                "label": {
+                    "title": "this is the help text for the default email field",
+                    "value": "default email address"
+                },
+                "helpText": {
+                    "title": "help text",
+                    "value": "This email will be set as the default requester when creating a child ticket, it must appear in the user list."
+                }
+            },
+            "show_agreement_on_child_form": {
+                "label": {
+                    "title": "this is the help text for the showing sharing in form field",
+                    "value": "Show Sharing on child ticket"
+                },
+                "helpText": {
+                    "title": "help text",
+                    "value": "If selected there will be a sharing dropdown listing all agreements."
+                }
+            },
+            "do_not_copy_ccs": {
+                "label": {
+                    "title": "this is the help text for the no copy CCs field",
+                    "value": "Do not Copy the CCs to the child ticket form."
+                },
+                "helpText": {
+                    "title": "help text",
+                    "value": "If selected the new CC field will be hidden on child ticket creation"
+                }
+            },
+            "hide_agreement_for_non_child_tickets": {
+                "label": {
+                    "title": "this is the help text for the hide sharing on parent and new tickets",
+                    "value": "Hide Sharing on non child tickets"
+                },
+                "helpText": {
+                    "title": "help text",
+                    "value": "If selected the sharing dropdown will be hidden for any non child tickets."
+                }
+            }
+        },
+        "package": "linked_ticket_app"
+    },
+    "ajax_failure": {
+        "title": "standard error message",
+        "value": "An error occurred. Please try reloading the app."
+    },
+    "ancestry_field_missing": {
+        "title": "standard error message trying to help the user troubleshoot",
+        "value": "<strong>Linked Ticket App:</strong> Did you follow the set up instructions and set up a custom field?"
+    },
+    "has_parent": {
+        "title": "this is displayed on the right hand side of a ticket once the ticket has been broken into two. it's to inform the agent that this ticket has a parent ticket which is a linked ticket basically",
+        "value": "This ticket has a parent ticket."
+    },
+    "has_child": {
+        "title": "this is displayed on the right hand side of a ticket once the ticket has been broken into two. it's to inform the agent that this ticket has a child ticket which is a linked ticket basically",
+        "value": "This ticket has a child ticket."
+    },
+    "form": {
+        "subject": {
+            "label": {
+                "title": "This is a form to create a linked ticket from an existing regular ticket, this is the subject of the future child ticket",
+                "value": "Subject:"
+            }
+        },
+        "description": {
+            "label": {
+                "title": "This is a form to create a linked ticket from an existing regular ticket, this is the description of the future child ticket",
+                "value": "Description:"
+            }
+        },
+        "requester_email": {
+            "label": {
+                "title": "This is a form to create a linked ticket from an existing regular ticket, this is the requester email of the future child ticket",
+                "value": "Requester Email"
+            }
+        },
+        "requester_name": {
+            "label": {
+                "title": "This is a form to create a linked ticket from an existing regular ticket, this is the requester name of the future child ticket",
+                "value": "Requester Name (For new requesters only)"
+            }
+        },
+        "agreement": {
+            "label": {
+                "title": "This is a form to create a linked ticket from an existing regular ticket, this is the Shared agreement details",
+                "value": "Share With"
+            }
+        },
+        "group": {
+            "label": {
+                "title": "This is a form to create a linked ticket from an existing regular ticket, this is the assignee group of the future child ticket",
+                "value": "Group"
+            }
+        },
+        "requester": {
+            "label": {
+                "title": "This is a form to create a linked ticket from an existing regular ticket, this is the label for the requester from of the app",
+                "value": "Requester:"
+            },
+            "current_user": {
+                "title": "This is a value from the requester dropdown, a bunch of options, one of them being making yourself as the requester",
+                "value": "me"
+            },
+            "ticket_requester": {
+                "title": "This is a value from the requester dropdown, a bunch of options, one of them being making the original ticker requester the new requester too",
+                "value": "ticket requester"
+            },
+            "custom": {
+                "title": "This is a value from the requester dropdown, a bunch of options, one of them being creating a new requester",
+                "value": "other"
+            }
+        },
+        "assignee": {
+            "label": {
+                "title": "This is a form to create a linked ticket from an existing regular ticket, this is the label for the assignee from of the app",
+                "value": "Assignee:"
+            },
+            "current_user": {
+                "title": "This is a value from the requester dropdown, a bunch of options, one of them being making yourself as the assignee",
+                "value": "me"
+            },
+            "ticket_assignee": {
+                "title": "This is a value from the requester dropdown, a bunch of options, one of them being making the current ticket assignee the new assignee",
+                "value": "ticket assignee"
+            },
+            "custom": {
+                "title": "This is a value from the requester dropdown, a bunch of options, one of them being creating a new assignee",
+                "value": "other"
+            },
+            "group_label": {
+                "title": "This is a form to create a linked ticket from an existing regular ticket, this is the label for the assignee group from of the app",
+                "value": "Assignee group"
+            },
+            "name_label": {
+                "title": "This is a form to create a linked ticket from an existing regular ticket, this is the label for the assignee name from of the app",
+                "value": "Assignee name"
+            }
+        },
+        "copy_description": {
+            "label": {
+                "title": "This is a checkbox option to copy the current ticket description into the future ticket created through the app",
+                "value": "Copy current ticket description"
+            }
+        },
+        "ccs": {
+            "label": {
+                "title": "this is a field containing CCs on this ticket",
+                "value": "CCs:"
+            }
+        },
+        "tags": {
+            "label": {
+                "title": "this is a field containing tags on this ticket",
+                "value": "Tags:"
+            }
+        },
+        "submit": {
+            "title": "this is a big button to submit the ticket creation form",
+            "value": "Create Ticket"
+        },
+        "loading": {
+            "title": "wait text while ticket is being submitted",
+            "value": "Submitting..."
         }
-      },
-      "child_tag": {
-        "label": {
-          "title": "this is the tag that the admin wishes to apply to every ticket that has gone through the app. this is to be defined on the settings page",
-          "value": "Child Tag"
+    },
+    "ticket": {
+        "id": {
+            "title": "in the app once the ticket is created this is a form proving them with information on the other ticket child/parent real time state. this is for the ID of the other ticket",
+            "value": "ID"
         },
-      "helpText": {
-          "title": "this is the help text for the child tag field",
-          "value": "This tag will be added to the created child ticket. Example : child_ticket"
+        "subject": {
+            "title": "in the app once the ticket is created this is a form proving them with information on the other ticket child/parent real time state. this is for the subject of the other ticket",
+            "value": "Subject:"
         },
-       "default_email": {
-            "title": "this is the help text for the default email field",
-            "value": "This email will be set as the default requester when creating a child ticket"
-      	},
-          "show_agreement_on_child_form": {
-              "title": "Show the sharing dropdown on the new child ticket form",
-              "value": "If selected there will be a sharing dropdown listing all agreements."
-          },
-          "do_not_copy_ccs": {
-              "title": "Do not Copy CC's Accross to the new ticket form",
-              "value": "If selected the new CC field will be hidden on child ticket creation"
-          },
-          "hide_agreement_for_non_child_tickets": {
-              "title": "Hide the Sharing dropdown on any ticket that is not a child.",
-              "value": "If selected the sharing dropdown will be hidden for any non child tickets."
-          }         
-      }
+        "status": {
+            "title": "in the app once the ticket is created this is a form proving them with information on the other ticket child/parent real time state. this is for the status of the other ticket",
+            "value": "Status"
+        },
+        "type": {
+            "title": "in the app once the ticket is created this is a form proving them with information on the other ticket child/parent real time state. this is for the type of the other ticket",
+            "value": "Type"
+        },
+        "assignee": {
+            "title": "in the app once the ticket is created this is a form proving them with information on the other ticket child/parent real time state. this is for the assignee of the other ticket",
+            "value": "Assignee:"
+        },
+        "group": {
+            "title": "in the app once the ticket is created this is a form proving them with information on the other ticket child/parent real time state. this is for the group of the other ticket",
+            "value": "Group"
+        },
+        "values": {
+            "status": {
+                "new": {
+                    "title": "when the ticket is new",
+                    "value": "New"
+                },
+                "open": {
+                    "title": "when the ticket is open",
+                    "value": "Open"
+                },
+                "pending": {
+                    "title": "when the ticket is pending",
+                    "value": "Pending"
+                },
+                "hold": {
+                    "title": "when the ticket is hold",
+                    "value": "Hold"
+                },
+                "solved": {
+                    "title": "when the ticket is solved",
+                    "value": "Solved"
+                },
+                "closed": {
+                    "title": "when the ticket is closed",
+                    "value": "Closed"
+                }
+            },
+            "type": {
+                "problem": {
+                    "title": "when the ticket type is about a problem",
+                    "value": "Problem"
+                },
+                "incident": {
+                    "title": "when the ticket type is about an incident",
+                    "value": "Incident"
+                },
+                "question": {
+                    "title": "when the ticket type is about an question",
+                    "value": "Question"
+                },
+                "task": {
+                    "title": "when the ticket type is about a task",
+                    "value": "Task"
+                }
+            }
+        }
     },
-    "package": "linked_ticket_app"
-  },
-  "ajax_failure": {
-    "title": "standard error message",
-    "value": "An error occurred. Please try reloading the app."
-  },
-  "ancestry_field_missing": {
-    "title": "standard error message trying to help the user troubleshoot",
-    "value": "<strong>Linked Ticket App:</strong> Did you follow the set up instructions and set up a custom field?"
-  },
-  "has_parent": {
-    "title": "this is displayed on the right hand side of a ticket once the ticket has been broken into two. it's to inform the agent that this ticket has a parent ticket which is a linked ticket basically",
-    "value": "This ticket has a parent ticket."
-  },
-  "has_child": {
-    "title": "this is displayed on the right hand side of a ticket once the ticket has been broken into two. it's to inform the agent that this ticket has a child ticket which is a linked ticket basically",
-    "value": "This ticket has a child ticket."
-  },
-  "form": {
-    "subject": {
-      "label": {
-        "title": "This is a form to create a linked ticket from an existing regular ticket, this is the subject of the future child ticket",
-        "value": "Subject:"
-      }
+    "delimiter": {
+        "title": "This is a placeholder text marking the different between the new text and the old one",
+        "value": "Original Description"
     },
-    "description": {
-      "label": {
-        "title": "This is a form to create a linked ticket from an existing regular ticket, this is the description of the future child ticket",
-        "value": "Description:"
-      }
-    },
-    "requester_email": {
-      "label": {
-        "title": "This is a form to create a linked ticket from an existing regular ticket, this is the requester email of the future child ticket",
-        "value": "Requester Email"
-      }
-    },
-    "requester_name": {
-      "label": {
-        "title": "This is a form to create a linked ticket from an existing regular ticket, this is the requester name of the future child ticket",
-        "value": "Requester Name (For new requesters only)"
-      }
-    },
-     "agreement": {
-      "label": {
-        "title": "This is a form to create a linked ticket from an existing regular ticket, this is the Shared agreement details",
-        "value": "Share With"
-      }
-    },
-    "group": {
-      "label": {
-        "title": "This is a form to create a linked ticket from an existing regular ticket, this is the assignee group of the future child ticket",
-        "value": "Group"
-      }
-    },
-    "requester": {
-      "label": {
-        "title": "This is a form to create a linked ticket from an existing regular ticket, this is the label for the requester from of the app",
-        "value": "Requester:"
-      },
-      "current_user": {
-        "title": "This is a value from the requester dropdown, a bunch of options, one of them being making yourself as the requester",
-        "value": "me"
-      },
-      "ticket_requester": {
-        "title": "This is a value from the requester dropdown, a bunch of options, one of them being making the original ticker requester the new requester too",
-        "value": "ticket requester"
-      },
-      "custom": {
-        "title": "This is a value from the requester dropdown, a bunch of options, one of them being creating a new requester",
-        "value": "other"
-      }
-    },
-    "assignee": {
-      "label": {
-        "title": "This is a form to create a linked ticket from an existing regular ticket, this is the label for the assignee from of the app",
-        "value": "Assignee:"
-      },
-      "current_user": {
-        "title": "This is a value from the requester dropdown, a bunch of options, one of them being making yourself as the assignee",
-        "value": "me"
-      },
-      "ticket_assignee": {
-        "title": "This is a value from the requester dropdown, a bunch of options, one of them being making the current ticket assignee the new assignee",
-        "value": "ticket assignee"
-      },
-      "custom": {
-        "title": "This is a value from the requester dropdown, a bunch of options, one of them being creating a new assignee",
-        "value": "other"
-      },
-      "group_label": {
-        "title": "This is a form to create a linked ticket from an existing regular ticket, this is the label for the assignee group from of the app",
-        "value": "Assignee group"
-      },
-      "name_label": {
-        "title": "This is a form to create a linked ticket from an existing regular ticket, this is the label for the assignee name from of the app",
-        "value": "Assignee name"
-      }
-    },
-    "copy_description": {
-      "label": {
-        "title": "This is a checkbox option to copy the current ticket description into the future ticket created through the app",
-        "value": "Copy current ticket description"
-      }
-    },
-    "ccs": {
-      "label": {
-        "title": "this is a field containing CCs on this ticket",
-        "value": "CCs:"
-      }
-    },
-    "tags": {
-      "label": {
-        "title": "this is a field containing tags on this ticket",
-        "value": "Tags:"
-      }
-    },
-    "submit": {
-      "title": "this is a big button to submit the ticket creation form",
-      "value": "Create Ticket"
-    },
-    "loading": {
-      "title": "wait text while ticket is being submitted",
-      "value": "Submitting..."
+    "create_ticket": {
+        "title": "empty",
+        "value": "Create a ticket"
     }
-  },
-  "ticket": {
-    "id": {
-      "title": "in the app once the ticket is created this is a form proving them with information on the other ticket child/parent real time state. this is for the ID of the other ticket",
-      "value": "ID"
-    },
-    "subject": {
-      "title": "in the app once the ticket is created this is a form proving them with information on the other ticket child/parent real time state. this is for the subject of the other ticket",
-      "value": "Subject:"
-    },
-    "status": {
-      "title": "in the app once the ticket is created this is a form proving them with information on the other ticket child/parent real time state. this is for the status of the other ticket",
-      "value": "Status"
-    },
-    "type": {
-      "title": "in the app once the ticket is created this is a form proving them with information on the other ticket child/parent real time state. this is for the type of the other ticket",
-      "value": "Type"
-    },
-    "assignee": {
-      "title": "in the app once the ticket is created this is a form proving them with information on the other ticket child/parent real time state. this is for the assignee of the other ticket",
-      "value": "Assignee:"
-    },
-    "group": {
-      "title": "in the app once the ticket is created this is a form proving them with information on the other ticket child/parent real time state. this is for the group of the other ticket",
-      "value": "Group"
-    },
-    "values": {
-      "status": {
-        "new": {
-          "title": "when the ticket is new",
-          "value": "New"
-        },
-        "open": {
-          "title": "when the ticket is open",
-          "value": "Open"
-        },
-        "pending": {
-          "title": "when the ticket is pending",
-          "value": "Pending"
-        },
-        "hold": {
-          "title": "when the ticket is hold",
-          "value": "Hold"
-        },
-        "solved": {
-          "title": "when the ticket is solved",
-          "value": "Solved"
-        },
-        "closed": {
-          "title": "when the ticket is closed",
-          "value": "Closed"
-        }
-      },
-      "type": {
-        "problem": {
-          "title": "when the ticket type is about a problem",
-          "value": "Problem"
-        },
-        "incident": {
-          "title": "when the ticket type is about an incident",
-          "value": "Incident"
-        },
-        "question": {
-          "title": "when the ticket type is about an question",
-          "value": "Question"
-        },
-        "task": {
-          "title": "when the ticket type is about a task",
-          "value": "Task"
-        }
-      }
-    }
-  },
-  "delimiter": {
-    "title": "This is a placeholder text marking the different between the new text and the old one",
-    "value": "Original Description"
-  },
-  "create_ticket": {
-    "title": "empty",
-    "value": "Create a ticket"
-  }
 }
