@@ -150,12 +150,14 @@
 
         this.spinnerOn();
         this.disableSubmit();
+        //console.log(attributes);
 
         this.ajax('createChildTicket', attributes)
           .always(function(){
             this.spinnerOff();
             this.enableSubmit();
           });
+         
       }
     },
 
@@ -167,6 +169,7 @@
     formAssignee: function(val){return this.formGetOrSet('.assignee', val); },
     formRequesterEmail: function(val){return this.formGetOrSet('.requester_email', val); },
     formRequesterName: function(val){return this.formGetOrSet('.requester_name', val); },
+    formAgreement: function(val){return this.formGetOrSet('.agreement',val);},
 
     formGetOrSet: function(selector, val){
       if (_.isUndefined(val))
@@ -427,7 +430,7 @@
         "custom_fields": [
           { id: this.ancestryFieldId(), value: 'child_of:' + this.ticket().id() }
         ],
-          "sharing_agreement_ids": [ Number("20048649") ]
+          "sharing_agreements": [ {"id": Number(this.formAgreement())} ]
       };
 
       _.extend(params,
@@ -435,7 +438,7 @@
                this.serializeAssigneeAttributes(),
                this.serializeTagAttributes()
               );
-		console.log(params); //log it baby!
+		//console.log(params); //log it baby!
       return { "ticket": params };
     },
 
