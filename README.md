@@ -23,5 +23,5 @@ The changes are as follows:
 * Assignee is set to current user by default
 
 
-*This App was modified for [ClickPOS](www.clickpos.com) a Retail point of sale managament system*
+*This App was modified for [ClickPOS](http://www.clickpos.com) a Retail point of sale managament system*
 
