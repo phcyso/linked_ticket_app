@@ -16,12 +16,12 @@ The changes are as follows:
 * Do not Copy CC's to the child ticket
 * Set a default requestor email address for the child tickets
 * Hide sharing on parent and new tickets 
-* show sharing option on child ticket form -- **CURRENTLY DOES NOT APPLY SHARING TO THE CHILD TICKET** 
+* show sharing option on child ticket form -- **Only applys for non zendesk sharing agreements, i.e. YouTrack** If enabled the sharing agreements will be turned on by default
 
 ** Other Changes **
 
 * Assignee is set to current user by default
 
 
-*This App was modified for [ClickPOS](www.clickpos.com) a Retail point of sale managament system*
+*This App was modified for [ClickPOS](http://www.clickpos.com) a Retail point of sale managament system*
 
