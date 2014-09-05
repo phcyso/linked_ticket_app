@@ -11,9 +11,9 @@
  
 ** may not be technically possible  - awaiting Zendesk support**
 
-* Set a sharing agreement when creating a child ticket
+* Set a sharing agreement when creating a child ticket - Completed for youtrack sharing agreements. Zendesk support say it is not possible to share to anotehr zendesk account through api.
 
 
 ** Add labels to the settings **  -- COMPLETED
 
-** Translate the new text for the settinsg I added **
+** Translate the new text for the settings I added **
