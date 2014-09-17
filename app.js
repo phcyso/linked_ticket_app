@@ -95,7 +95,8 @@
       _.defer(function() {
         if (this.hideAncestryField()) {
           this.loadIfDataReady();
-        
+          //Hiding Shared field on non child tickets
+          this.hideSharingField();
         }
       }.bind(this));
     },
@@ -105,13 +106,11 @@
           this.ticket().id() &&
           !_.isUndefined(this.ancestryValue())){
 
-        if (this.hasChild() || this.hasParent()){
-          if (this.hasChild()) {this.hideSharingField();}
+        if (this.hasChild() || this.hasParent()){       
             return this.ajax('fetchTicket', this.childID() || this.parentID());
         }
           
-		//Hiding Shared field on non child tickets
-        this.hideSharingField();
+
         this.displayHome();
       }
     },
@@ -541,7 +540,7 @@
         
     },
     hideSharingField: function(){
-        if (this.hideParentAgreement()){
+        if (this.hideParentAgreement() && (this.hasChild() || !this.hasParent())){
           var field = this.ticketFields("sharedWith");
           if (!field){
             services.notify(this.I18n.t("shared Field missing"), "error");
